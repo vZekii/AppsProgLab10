@@ -1,0 +1,13 @@
+.button {
+    -fx-background-color: black;
+    -fx-text-fill: yellow;
+}
+
+.button:hover {
+    -fx-background-color: blue;
+}
+
+.h1 {
+    -fx-font-size: 32px;
+    -fx-text-fill: blue;
+}

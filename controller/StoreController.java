@@ -12,5 +12,30 @@ import java.text.*;
 import au.edu.uts.ap.javafx.*;
 import model.*;
 
-public class StoreController {
+import javax.swing.text.View;
+
+public class StoreController extends Controller<Store> {
+    @FXML
+    private Text cashTxt;
+    @FXML
+    private ListView<Product> productsLv;
+
+    public final Store getStore() {
+        return model;
+    }
+
+    @FXML
+    public void initialize() {
+        cashTxt.textProperty().bind(getStore().getCashRegister().cashProperty().asString("$%.2f"));
+    }
+
+    private Product getSelectedProduct() {
+        return productsLv.getSelectionModel().getSelectedItem();
+    }
+
+    @FXML
+    private void handleView(ActionEvent event) throws Exception {
+        ViewLoader.showStage(getSelectedProduct(), "/view/product.fxml", "Product", new Stage());
+    }
+
 }
